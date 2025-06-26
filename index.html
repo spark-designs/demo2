@@ -26,16 +26,16 @@
         <style>
             body {
                 font-family: 'Inter', sans-serif;
-                background-color: #0A0A0A;
-                color: #E5E5E5;
+                background-color: #0A0A0A; /* Dark gray/almost black */
+                color: #E5E5E5; /* Light gray text */
             }
 
             .font-poppins {
                 font-family: 'Poppins', sans-serif;
             }
 
-            .accent-blue {
-                color: #00BFFF;
+            .accent-color { /* Renamed from accent-blue to be generic */
+                color: #CCCCCC; /* Lighter gray for accent */
             }
 
             .hero-bg {
@@ -52,16 +52,16 @@
             }
 
             .btn-primary {
-                background-color: #00BFFF;
-                color: #0A0A0A;
+                background-color: #E5E5E5; /* White/light gray for primary button */
+                color: #0A0A0A; /* Dark text on light button */
                 transition: all 0.3s ease;
                 font-weight: 700;
             }
 
             .btn-primary:hover {
-                background-color: #FFFFFF;
+                background-color: #CCCCCC; /* Slightly darker on hover */
                 transform: translateY(-2px);
-                box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+                box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); /* White shadow */
             }
 
             .sold-card {
@@ -72,7 +72,7 @@
 
             .sold-card:hover {
                 transform: translateY(-5px);
-                border-color: #00BFFF;
+                border-color: #E5E5E5; /* Light gray border on hover */
             }
 
             /* Testimonial Marquee */
@@ -117,10 +117,10 @@
                 <a href="#" class="font-poppins text-2xl font-bold text-white transition-colors duration-300" onclick="window.location.hash = '';">Jessica Sterling</a>
                 <div class="flex items-center">
                     <div id="nav-links" class="hidden md:flex space-x-8 text-white transition-colors duration-300 font-medium">
-                        <a href="#about" class="hover:accent-blue">About</a>
-                        <a href="#sold" class="hover:accent-blue">Sold</a>
-                        <a href="#testimonials" class="hover:accent-blue">Testimonials</a>
-                        <a href="#contact" class="hover:accent-blue">Contact</a>
+                        <a href="#about" class="hover:accent-color">About</a>
+                        <a href="#properties" class="hover:accent-color">Properties</a>
+                        <a href="#testimonials" class="hover:accent-color">Testimonials</a>
+                        <a href="#contact" class="hover:accent-color">Contact</a>
                     </div>
                     <!-- Mobile Menu Button -->
                     <div class="md:hidden ml-4">
@@ -135,7 +135,7 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-black mt-4 rounded-lg shadow-xl">
                 <a href="#about" class="block py-3 px-4 text-gray-300 hover:bg-gray-900">About</a>
-                <a href="#sold" class="block py-3 px-4 text-gray-300 hover:bg-gray-900">Recently Sold</a>
+                <a href="#sold" class="block py-3 px-4 text-gray-300 hover:bg-gray-900">Properties</a>
                 <a href="#testimonials" class="block py-3 px-4 text-gray-300 hover:bg-gray-900">Testimonials</a>
                 <a href="#contact" class="block py-3 px-4 text-gray-300 hover:bg-gray-900">Contact</a>
             </div>
@@ -184,49 +184,67 @@
                     id: 'bay-colony-estate',
                     title: 'Bay Colony Estate',
                     location: 'Bay Colony, FL',
-                    originalPrice: '$4,250,000',
+                    price: '$4,250,000',
+                    beds: 5,
+                    baths: 6,
+                    sqft: 7500,
+                    // Reverted to original image URL
                     mainImage: 'https://cdn.floridadesign.com/wp-content/uploads/sites/137/2020/03/Choeff_Rodriguez_FD30-1A.jpg',
                     interiorImages: [
-                        'https://placehold.co/800x600/333/EEE?text=Interior+1',
-                        'https://placehold.co/800x600/333/EEE?text=Interior+2',
-                        'https://placehold.co/800x600/333/EEE?text=Interior+3',
-                        'https://placehold.co/800x600/333/EEE?text=Interior+4'
+                        'https://images.unsplash.com/photo-1596436889106-be31e33d97f8?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1580582932707-5205423ce5a2?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1596001275373-c8a77d337d11?q=80&w=2940&auto=format&fit=crop' // Example interior
                     ],
                     zillowLink: 'https://www.zillow.com/homes/bay-colony-fl/', // Mock link
                     neighborhoodInfo: "Bay Colony is an exclusive waterfront community renowned for its luxurious estates, private yacht clubs, and pristine beaches. Residents enjoy unparalleled privacy and access to high-end amenities. It's a highly sought-after area for discerning homeowners seeking an opulent lifestyle.",
-                    schoolInfo: "Zoned for top-rated public and private schools, including Bay Colony Elementary (A+ rated), Coastal Middle School, and Atlantic High School. Several prestigious private academies are also within close proximity."
+                    schoolInfo: "Zoned for top-rated public and private schools, including Bay Colony Elementary (A+ rated), Coastal Middle School, and Atlantic High School. Several prestigious private academies are also within close proximity.",
+                    specialFeatures: ["WATERFRONT ACCESS", "PRIVATE DOCK", "INFINITY POOL", "SMART HOME SYSTEM", "CHEF'S KITCHEN", "HOME THEATER"],
+                    description: "Experience unparalleled luxury in this stunning Bay Colony Estate. This magnificent waterfront property boasts breathtaking views, a private dock with direct access to the Intracoastal Waterway, and an exquisite infinity pool. Inside, you'll find a state-of-the-art smart home system, a gourmet chef's kitchen, and a dedicated home theater. Every detail has been meticulously crafted for the most discerning buyer."
                 },
                 {
                     id: 'coral-gables-villa',
                     title: 'Coral Gables Villa',
                     location: 'Coral Gables, FL',
-                    originalPrice: '$3,100,000',
+                    price: '$3,100,000',
+                    beds: 4,
+                    baths: 4.5,
+                    sqft: 5200,
+                    // Reverted to original image URL
                     mainImage: 'https://images.unsplash.com/photo-1570129476813-fddf10f4437a?q=80&w=2940&auto=format&fit=crop',
                     interiorImages: [
-                        'https://placehold.co/800x600/444/DDD?text=Living+Room',
-                        'https://placehold.co/800x600/444/DDD?text=Kitchen',
-                        'https://placehold.co/800x600/444/DDD?text=Bedroom',
-                        'https://placehold.co/800x600/444/DDD?text=Bathroom'
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1600585152200-c20ad41e0649?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1600585153450-4cb5877148a0?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1600585154564-964295325779?q=80&w=2940&auto=format&fit=crop' // Example interior
                     ],
-                    zillowLink: 'https://www.zillow.com/homes/coral-gables-fl/', // Mock link
+                    zillowLink: 'https://www.zillow.com/homes/coral-gables-fl/',
                     neighborhoodInfo: "Coral Gables is celebrated for its historic architecture, tree-lined streets, and vibrant downtown area. It's a planned community with a strong emphasis on beauty and urban planning, offering upscale shopping, dining, and cultural attractions. The city is often referred to as 'The City Beautiful'.",
-                    schoolInfo: "Home to an excellent school district, including Coral Gables Elementary School, Ponce de Leon Middle School, and the highly-regarded Coral Gables Senior High School. Numerous private school options, such as Gulliver Preparatory School, are also available in the area."
+                    schoolInfo: "Home to an excellent school district, including Coral Gables Elementary School, Ponce de Leon Middle School, and the highly-regarded Coral Gables Senior High School. Numerous private school options, such as Gulliver Preparatory School, are also available in the area.",
+                    specialFeatures: ["HISTORIC CHARM", "LUSH GARDENS", "MARBLE FLOORS", "HIGH CEILINGS", "GOURMET KITCHEN", "PRIVATE BALCONIES"],
+                    description: "Discover timeless elegance in this stunning Coral Gables Villa. Nestled among mature oak trees, this home combines historic charm with modern amenities. Features include gleaming marble floors, soaring high ceilings, and a chef's dream kitchen. Enjoy private balconies overlooking beautifully manicured gardens, perfect for outdoor entertaining."
                 },
                 {
                     id: 'coconut-grove-estate',
                     title: 'Coconut Grove Estate',
                     location: 'Coconut Grove, FL',
-                    originalPrice: '$2,800,000',
+                    price: '$2,800,000',
+                    beds: 3,
+                    baths: 3.5,
+                    sqft: 4100,
+                    // Reverted to original image URL
                     mainImage: 'https://images.unsplash.com/photo-1599765278149-a3b0922b9b77?q=80&w=2940&auto=format&fit=crop',
                     interiorImages: [
-                        'https://placehold.co/800x600/555/CCC?text=Dining+Area',
-                        'https://placehold.co/800x600/555/CCC?text=Patio',
-                        'https://placehold.co/800x600/555/CCC?text=Study',
-                        'https://placehold.co/800x600/555/CCC?text=Pool+View'
+                        'https://images.unsplash.com/photo-1596436889106-be31e33d97f8?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1580582932707-5205423ce5a2?q=80&w=2940&auto=format&fit=crop', // Example interior
+                        'https://images.unsplash.com/photo-1596001275373-c8a77d337d11?q=80&w=2940&auto=format&fit=crop' // Example interior
                     ],
-                    zillowLink: 'https://www.zillow.com/homes/coconut-grove-fl/', // Mock link
+                    zillowLink: 'https://www.zillow.com/homes/coconut-grove-fl/',
                     neighborhoodInfo: "Coconut Grove offers a unique bohemian atmosphere with lush landscapes, charming boutiques, and bayfront parks. It's a historic neighborhood known for its artistic community, outdoor cafes, and a relaxed, laid-back vibe, distinct from the more urban areas of Miami. The area features a mix of historic homes and modern residences.",
-                    schoolInfo: "Families in Coconut Grove benefit from being within the zone for reputable schools such as Coconut Grove Elementary, George Washington Carver Middle School, and Coral Gables Senior High School (shared zone). Many independent private schools are also located here, offering diverse educational opportunities."
+                    schoolInfo: "Families in Coconut Grove benefit from being within the zone for reputable schools such as Coconut Grove Elementary, George Washington Carver Middle School, and Coral Gables Senior High School (shared zone). Many independent private schools are also located here, offering diverse educational opportunities.",
+                    specialFeatures: ["WALK TO SHOPS", "BAYFRONT VIEWS", "UPDATED KITCHEN", "PRIVATE PATIO", "HARDWOOD FLOORS", "NATURAL LIGHT"],
+                    description: "Immerse yourself in the vibrant lifestyle of Coconut Grove with this stunning estate. Enjoy the convenience of walking to boutique shops and cafes, breathtaking bayfront views, and a beautifully updated kitchen perfect for entertaining. This home features abundant natural light, gleaming hardwood floors, and a private patio ideal for relaxation."
                 }
             ];
 
@@ -241,14 +259,14 @@
                             <h1 class="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold mb-4" data-aos="fade-up">Sell Faster. Buy Smarter.</h1>
                             <p class="text-xl md:text-2xl font-light mb-8" data-aos="fade-up" data-aos-delay="200">Your neighborhood expert, your competitive edge in the market.</p>
                             <div class="mt-8 flex justify-center space-x-6" data-aos="fade-up" data-aos-delay="400">
-                                <a href="mailto:jessica.sterling@sterlingproperties.com" class="flex items-center space-x-2 hover:accent-blue transition-colors">
+                                <a href="mailto:jessica.sterling@sterlingproperties.com" class="flex items-center space-x-2 hover:accent-color transition-colors">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                                     </svg>
                                     <span>Email Me</span>
                                 </a>
-                                <a href="tel:+12815550199" class="flex items-center space-x-2 hover:accent-blue transition-colors">
+                                <a href="tel:+12815550199" class="flex items-center space-x-2 hover:accent-color transition-colors">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.024 11.024 0 005.418 5.418l.759-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C6.477 18 2 13.523 2 8V5a1 1 0 011-1h.5z"></path>
                                     </svg>
@@ -262,19 +280,19 @@
                         <div class="container mx-auto px-6">
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                                 <div data-aos="fade-up">
-                                    <p class="text-4xl font-bold font-poppins accent-blue">47</p>
+                                    <p class="text-4xl font-bold font-poppins accent-color">47</p>
                                     <p class="text-gray-400 mt-1">Homes Sold This Year</p>
                                 </div>
                                 <div data-aos="fade-up" data-aos-delay="100">
-                                    <p class="text-4xl font-bold font-poppins accent-blue">$22M+</p>
+                                    <p class="text-4xl font-bold font-poppins accent-color">$22M+</p>
                                     <p class="text-gray-400 mt-1">In Total Volume</p>
                                 </div>
                                 <div data-aos="fade-up" data-aos-delay="200">
-                                    <p class="text-4xl font-bold font-poppins accent-blue">98%</p>
+                                    <p class="text-4xl font-bold font-poppins accent-color">98%</p>
                                     <p class="text-gray-400 mt-1">List-to-Sale Price</p>
                                 </div>
                                 <div data-aos="fade-up" data-aos-delay="300">
-                                    <p class="text-4xl font-bold font-poppins accent-blue">12</p>
+                                    <p class="text-4xl font-bold font-poppins accent-color">12</p>
                                     <p class="text-gray-400 mt-1">Years of Experience</p>
                                 </div>
                             </div>
@@ -294,7 +312,7 @@
                                     <div class="flex items-center space-x-8 mt-8">
                                         <span class="text-sm font-semibold text-gray-500">As Featured In:</span>
                                         <img loading="lazy" src="https://placehold.co/100x40/333/666?text=Forbes" alt="Forbes Logo" class="h-6 opacity-60">
-                                        <img loading="lazy" src="https://placehold.co/100x40/333/666?text=WSJ" alt="Wall Street Journal Logo" class="h-6 opacity-60">
+                                        <img loading="lazy" src="https://placehold.co/100x40/333/666?text=WSJ" alt="Wall Street Journal Journal Logo" class="h-6 opacity-60">
                                         <img loading="lazy" src="https://placehold.co/120x40/333/666?text=RealtyToday" alt="Realty Today Logo" class="h-6 opacity-60">
                                     </div>
                                 </div>
@@ -313,8 +331,8 @@
                                         <h3 class="text-xl font-bold mb-2 text-white">${houseData[0].title}</h3>
                                         <p class="text-gray-400 mb-4">${houseData[0].location}</p>
                                         <div class="flex justify-between items-center">
-                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[0].originalPrice}</p>
-                                            <span class="bg-blue-500/20 text-blue-300 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
+                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[0].price}</p>
+                                            <span class="bg-gray-700 text-gray-100 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
                                         </div>
                                     </div>
                                 </div>
@@ -325,8 +343,8 @@
                                         <h3 class="text-xl font-bold mb-2 text-white">${houseData[1].title}</h3>
                                         <p class="text-gray-400 mb-4">${houseData[1].location}</p>
                                         <div class="flex justify-between items-center">
-                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[1].originalPrice}</p>
-                                            <span class="bg-blue-500/20 text-blue-300 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
+                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[1].price}</p>
+                                            <span class="bg-gray-700 text-gray-100 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
                                         </div>
                                     </div>
                                 </div>
@@ -337,8 +355,8 @@
                                         <h3 class="text-xl font-bold mb-2 text-white">${houseData[2].title}</h3>
                                         <p class="text-gray-400 mb-4">${houseData[2].location}</p>
                                         <div class="flex justify-between items-center">
-                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[2].originalPrice}</p>
-                                            <span class="bg-blue-500/20 text-blue-300 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
+                                            <p class="text-2xl font-poppins font-bold text-gray-600 line-through">${houseData[2].price}</p>
+                                            <span class="bg-gray-700 text-gray-100 font-bold py-1 px-4 rounded-full text-sm">SOLD</span>
                                         </div>
                                     </div>
                                 </div>
@@ -387,27 +405,27 @@
                                 <h2 class="text-4xl md:text-5xl font-poppins mb-4">Ready to find your home?</h2>
                                 <p class="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">Let's build your future in The Woodlands together. Reach out today for a complimentary consultation.</p>
                                 <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
-                                    <a href="mailto:jessica.sterling@sterlingproperties.com" class="flex items-center space-x-2 hover:accent-blue transition-colors">
+                                    <a href="mailto:jessica.sterling@sterlingproperties.com" class="flex items-center space-x-2 hover:accent-color transition-colors">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                        </svg>
-                                        <span>jessica.sterling@sterlingproperties.com</span>
-                                    </a>
-                                    <a href="tel:+12815550199" class="flex items-center space-x-2 hover:accent-blue transition-colors">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.024 11.024 0 005.418 5.418l.759-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C6.477 18 2 13.523 2 8V5a1 1 0 011-1h.5z"></path>
-                                        </svg>
-                                        <span>(281) 555-0199</span>
-                                    </a>
-                                </div>
-                                <p class="text-gray-500 text-lg">
-                                    <strong>Office:</strong>
-                                    1201 Lake Woodlands Dr, The Woodlands, TX 77380
-                                </p>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                    <span>jessica.sterling@sterlingproperties.com</span>
+                                </a>
+                                <a href="tel:+12815550199" class="flex items-center space-x-2 hover:accent-color transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.024 11.024 0 005.418 5.418l.759-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C6.477 18 2 13.523 2 8V5a1 1 0 011-1h.5z"></path>
+                                    </svg>
+                                    <span>(281) 555-0199</span>
+                                </a>
                             </div>
+                            <p class="text-gray-500 text-lg">
+                                <strong>Office:</strong>
+                                1201 Lake Woodlands Dr, The Woodlands, TX 77380
+                            </p>
                         </div>
-                    </section>
+                    </div>
+                </section>
                 `;
                 // Re-initialize AOS for newly loaded content
                 AOS.refreshHard();
@@ -430,8 +448,8 @@
                 if (!house) {
                     mainContent.innerHTML = `
                         <!-- Professional Feature Banner -->
-                        <div class="w-full bg-blue-600 text-white text-center py-3 text-sm font-semibold rounded-b-lg">
-                            This is a professional feature because this is a demo site.
+                        <div class="w-full bg-gray-700 text-white text-center py-3 text-sm font-semibold rounded-b-lg">
+                            This is a professional feature.
                         </div>
                         <section class="container mx-auto px-6 py-20 text-center">
                             <h2 class="text-4xl font-bold text-white">House Not Found</h2>
@@ -446,10 +464,15 @@
                     <img loading="lazy" src="${imgSrc}" alt="Interior view of ${house.title}" class="w-full h-48 object-cover rounded-lg shadow-md">
                 `).join('');
 
+                const specialFeaturesHtml = house.specialFeatures.map(feature => `
+                    <span class="bg-gray-800 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">${feature}</span>
+                `).join('');
+
+
                 mainContent.innerHTML = `
                     <!-- Professional Feature Banner -->
-                    <div class="w-full bg-blue-600 text-white text-center py-3 text-sm font-semibold rounded-b-lg">
-                        This is a professional feature because this is a demo site.
+                    <div class="w-full bg-gray-700 text-white text-center py-3 text-sm font-semibold rounded-b-lg">
+                        This is a professional feature.
                     </div>
 
                     <section class="py-12 md:py-20 bg-black">
@@ -461,27 +484,79 @@
 
                             <h1 class="text-4xl md:text-5xl font-poppins font-bold mb-2">${house.title}</h1>
                             <p class="text-gray-400 text-xl mb-6">${house.location}</p>
-                            <p class="text-2xl font-poppins font-bold text-white mb-8">Sold for: <span class="accent-blue">${house.originalPrice}</span></p>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                                <img loading="lazy" src="${house.mainImage}" alt="Main view of ${house.title}" class="w-full col-span-1 md:col-span-2 h-72 object-cover rounded-lg shadow-xl">
-                                <div class="grid grid-cols-2 gap-4 col-span-1">
-                                    ${interiorImagesHtml}
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8 text-center md:text-left">
+                                <div class="col-span-2 md:col-span-1">
+                                    <p class="text-4xl font-bold font-poppins accent-color">${house.price}</p>
+                                    <p class="text-gray-400">List Price</p>
+                                </div>
+                                <div class="col-span-1">
+                                    <p class="text-4xl font-bold font-poppins accent-color">${house.beds}</p>
+                                    <p class="text-gray-400">Beds</p>
+                                </div>
+                                <div class="col-span-1">
+                                    <p class="text-4xl font-bold font-poppins accent-color">${house.baths}</p>
+                                    <p class="text-gray-400">Baths</p>
+                                </div>
+                                <div class="col-span-2 md:col-span-1">
+                                    <p class="text-4xl font-bold font-poppins accent-color">${house.sqft}</p>
+                                    <p class="text-gray-400">Sqft</p>
+                                </div>
+                                <div class="col-span-2 md:col-span-1 flex items-center justify-center md:justify-start">
+                                     <span class="bg-gray-700 text-gray-100 font-bold py-1 px-4 rounded-full text-lg">SOLD</span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-gray-300">
-                                <div>
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+                                <!-- Left Column: Property Details -->
+                                <div class="lg:col-span-2">
+                                    <img loading="lazy" src="${house.mainImage}" alt="Main view of ${house.title}" class="w-full h-96 object-cover rounded-lg shadow-xl mb-6">
+
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                        ${interiorImagesHtml}
+                                    </div>
+
+                                    <h3 class="text-2xl font-poppins font-bold text-white mb-4">What's Special</h3>
+                                    <div class="flex flex-wrap gap-2 mb-8">
+                                        ${specialFeaturesHtml}
+                                    </div>
+
+                                    <h3 class="text-2xl font-poppins font-bold text-white mb-4">Property Description</h3>
+                                    <p class="mb-6 leading-relaxed text-gray-400">${house.description}</p>
+
                                     <h3 class="text-2xl font-poppins font-bold text-white mb-4">Neighborhood Information</h3>
-                                    <p class="mb-4 leading-relaxed">${house.neighborhoodInfo}</p>
+                                    <p class="mb-6 leading-relaxed text-gray-400">${house.neighborhoodInfo}</p>
+
                                     <h3 class="text-2xl font-poppins font-bold text-white mb-4">School Zoning</h3>
-                                    <p class="mb-4 leading-relaxed">${house.schoolInfo}</p>
-                                </div>
-                                <div>
+                                    <p class="mb-6 leading-relaxed text-gray-400">${house.schoolInfo}</p>
+
                                     <h3 class="text-2xl font-poppins font-bold text-white mb-4">View on Zillow</h3>
-                                    <a href="${house.zillowLink}" target="_blank" class="btn-primary py-3 px-6 rounded-lg inline-block transition-transform hover:scale-105 flex items-center justify-center">
+                                    <a href="${house.zillowLink}" target="_blank" class="btn-primary py-3 px-6 rounded-lg inline-block transition-transform hover:scale-105 flex items-center justify-center w-fit">
                                         Open on Zillow
                                         <svg class="w-5 h-5 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6h6m0 0l-7-7m7 7L10 17"></path></svg>
+                                    </a>
+                                </div>
+
+                                <!-- Right Column: Agent & Tour Info -->
+                                <div class="lg:col-span-1 bg-gray-900 p-6 rounded-lg shadow-lg h-fit">
+                                    <h3 class="text-2xl font-poppins font-bold text-white mb-4 text-center">Listed by</h3>
+                                    <div class="flex flex-col items-center text-center mb-6">
+                                        <img src="https://placehold.co/80x80/666/DDD?text=Agent" alt="Agent Profile" class="w-24 h-24 rounded-full object-cover mb-4">
+                                        <div>
+                                            <p class="font-bold text-white text-xl mb-1">Jessica Sterling</p>
+                                            <p class="text-gray-400 text-base mb-2">Sterling Properties</p>
+                                            <div class="flex items-center justify-center text-gray-400 text-sm">
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.929 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/></svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.929 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/></svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.929 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/></svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.929 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/></svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.929 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/></svg>
+                                                <span class="text-gray-400 text-sm ml-1">6 Reviews</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="mailto:jessica.sterling@sterlingproperties.com" class="btn-primary w-full py-3 px-6 rounded-lg mb-4 text-center">
+                                        Contact Jessica
                                     </a>
                                 </div>
                             </div>
@@ -490,6 +565,8 @@
                 `;
                 // Set the hash to the house ID for deep linking and back/forward navigation
                 window.location.hash = houseId;
+                // Scroll to the top of the page when a new detail page is rendered
+                window.scrollTo(0, 0);
                 // Re-initialize AOS for newly loaded content
                 AOS.refreshHard();
             }
@@ -519,8 +596,18 @@
             });
 
             document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    // Scroll to section if it's a home page link
+                    if (link.hash && link.hash.startsWith('#')) {
+                        const targetElement = document.querySelector(link.hash);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
             });
+
 
             // Navigation Bar Style on Scroll
             const navbar = document.getElementById('navbar');
